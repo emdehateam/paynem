@@ -12,14 +12,14 @@
 --------------------------------------------------------------*/
 /* Fonts */
 :root {
-  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Questrial",  sans-serif;
-  --nav-font: "Noto Sans",  sans-serif;
+  --default-font: "Google Sans Code",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Google Sans Code",  sans-serif;
+  --nav-font: "Google Sans Code","Noto Sans",  sans-serif;
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root { 
-  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
+  --background-color: #ef8a17; /* Background color for the entire website, including individual sections */
   --default-color: #0a0f14; /* Default color used for the majority of the text content across the entire website */
   --heading-color: #0f2943; /* Color for headings, subheadings and title throughout the website */
   --accent-color: #273c75; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
@@ -31,8 +31,8 @@
 :root {
   --nav-color: #0a0f14;  /* The default color of the main navmenu links */
   --nav-hover-color: #e74c3c; /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+  --nav-mobile-background-color: #ef8a17; /* Used as the background color for mobile navigation menu */
+  --nav-dropdown-background-color: #ef8a17; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
   --nav-dropdown-color: #0a0f14; /* Used for navigation links of the dropdown items in the navigation menu. */
   --nav-dropdown-hover-color: #e74c3c; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }

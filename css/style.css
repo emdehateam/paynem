@@ -59,14 +59,15 @@
 
 .main {
     font-family: 'Roboto Slab', serif;
-    background-color: #FFFFFF;
+    /* background-color: #FFFFFF; */
+    background-color: #ef8a17;
     font-size: 16px;
 }
 
 /* SECTION NO 1 */
 
 .section-1 {
-    background-color: #F2F2F2;
+    background-color: #ef8a17;
     height: 450px;
     padding: 0px;
 }

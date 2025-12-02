@@ -1,0 +1,42 @@
+name: Deploy Static HTML to GitHub Pages
+
+# Kapan pipeline akan berjalan: setiap kali ada push ke branch 'main'
+on:
+  push:
+    branches:
+      - main
+  # Memberikan izin untuk menulis ke repositori (diperlukan untuk deployment)
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Definisikan 'Job' deployment
+jobs:
+  deploy:
+    # Environment tempat Job ini berjalan
+    runs-on: ubuntu-latest
+
+    # Langkah-langkah (Steps) untuk deployment
+    steps:
+      # Langkah 1: Checkout kode (mengambil file HTML dari repo)
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Langkah 2: Konfigurasi GitHub Pages Environment
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+        
+      # Langkah 3: Upload Artifact (mengambil file HTML untuk deployment)
+      # Di sini, kita asumsikan SEMUA file (termasuk index.html) berada di root repo.
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Direktori ini adalah tempat semua file Pages berada. 
+          # Karena Anda hanya menggunakan HTML di root, kita gunakan '.' (direktori saat ini).
+          path: './' 
+
+      # Langkah 4: Deploy ke GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

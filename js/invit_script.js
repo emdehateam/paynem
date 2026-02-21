@@ -89,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function() {
     .then(res => res.json())
     .then(data => {
         document.getElementById("guestName").innerText = data.name;
+        document.getElementById("guestNameInvitation").innerText = data.name;
         document.getElementById("guestAddress").innerText = data.address;
     });
 

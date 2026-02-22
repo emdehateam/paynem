@@ -91,6 +91,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("guestName").innerText = data.name;
         document.getElementById("guestNameInvitation").innerText = data.description;
         document.getElementById("guestAddress").innerText = data.address;
+        document.getElementById("invitation_title_guest").innerText = data.invitation_title;
     });
 
 });

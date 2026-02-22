@@ -2,36 +2,35 @@ const coverScreen = document.getElementById("coverScreen");
 const mainContent = document.getElementById("mainContent");
 const openBtn = document.getElementById("openInvitation");
 
-document.body.classList.add("no-scroll");
-
 // MUSIC CONTROL
 const music = document.getElementById("bgMusic");
 const musicBtn = document.getElementById("musicBtn");
 
-let isPlaying = false;
-// music.play();
-// musicBtn.addEventListener("click", function() {
-//     if (isPlaying) {
-//         music.pause();
-//         musicBtn.innerText = "🔇";
-//     } else {
-//         music.play();
-//         musicBtn.innerText = "🔊";
-//     }
-//     isPlaying = !isPlaying;
-// });
-openBtn.addEventListener("click", function() {
+let isPlaying = false; // status musik
 
-    // Play music
-    // music.play().catch(() => {});
+// disable scroll saat cover muncul
+document.body.classList.add("no-scroll");
+
+// Tombol pause/play
+musicBtn.addEventListener("click", function () {
     if (isPlaying) {
         music.pause();
         musicBtn.innerText = "🔇";
     } else {
-        music.play();
+        music.play().catch(() => {}); // handle autoplay block
         musicBtn.innerText = "🔊";
     }
     isPlaying = !isPlaying;
+});
+
+// Tombol buka undangan
+openBtn.addEventListener("click", function () {
+    // Main music play otomatis saat buka undangan
+    if (!isPlaying) {
+        music.play().catch(() => {}); // beberapa browser blok autoplay
+        musicBtn.innerText = "🔊";
+        isPlaying = true;
+    }
 
     // Fade out cover
     coverScreen.classList.add("fade-out");
@@ -41,8 +40,8 @@ openBtn.addEventListener("click", function() {
         mainContent.style.display = "block";
         document.body.classList.remove("no-scroll");
     }, 1000);
-
 });
+
 
 // const API_BASE = "http://127.0.0.1:8000/api";
 const API_BASE = "https://emdeha2021.pythonanywhere.com/api/invitations";

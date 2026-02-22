@@ -89,9 +89,9 @@ document.addEventListener("DOMContentLoaded", function() {
     .then(res => res.json())
     .then(data => {
         document.getElementById("guestName").innerText = data.name;
-        document.getElementById("guestNameInvitation").innerText = data.description;
+        document.getElementById("guestNameInvitation").innerText = data.name;
         document.getElementById("guestAddress").innerText = data.address;
-        document.getElementById("invitation_title_guest").innerText = data.invitation_title;
+        document.getElementById("invitation_title_guest").innerText = data.description;
     });
 
 });

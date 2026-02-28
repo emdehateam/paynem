@@ -44,8 +44,8 @@ openBtn.addEventListener("click", function () {
 });
 
 
-const API_BASE = "http://127.0.0.1:8000/api/invitations";
-// const API_BASE = "https://emdeha2021.pythonanywhere.com/api/invitations";
+// const API_BASE = "http://127.0.0.1:8000/api/invitations";
+const API_BASE = "https://emdeha2021.pythonanywhere.com/api/invitations";
 
 const query = window.location.search.substring(1);
 const parts = query.split('/');

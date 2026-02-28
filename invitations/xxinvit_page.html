@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Undangan Pernikahan Dani & Diana</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+/* FONT */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto&display=swap');
+
+/* GENERAL */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin:0;
+    padding:0;
+    background: #FFF5E1;
+    color: #3B2F2F;
+    overflow-x: hidden;
+}
+
+/* COVER SCREEN */
+.cover-screen {
+    position: fixed;
+    top:0; left:0;
+    width: 100%;
+    height: 100%;
+    background: url('../assets/img/welcome.jpg') center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1000;
+    transition: opacity 1s ease;
+}
+.cover-screen.fade-out {
+    opacity: 0;
+}
+
+/* COVER CONTENT */
+.cover-content p {
+    margin:0;
+    font-size: 1.2rem;
+}
+.cover-content h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    color: #D4AF37;
+    margin: 10px 0;
+}
+
+.konten {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+/* BUTTON */
+.btn-romantic {
+    background: #D4AF37;
+    color: #fff;
+    border: none;
+    padding: 10px 30px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+.btn-romantic:hover {
+    background: #C2962B;
+    color: #fff;
+}
+
+/* HERO SECTION */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    color: #3B2F2F;
+}
+.hero .title-script {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    color: #800000;
+}
+
+/* SECTION CARD */
+.section-card {
+    background: rgba(255,255,255,0.9);
+    margin: 40px auto;
+    padding: 30px 20px;
+    border-radius: 40px;
+    max-width: 600px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+.divider {
+    width: 80px;
+    height: 3px;
+    background: #D4AF37;
+    margin: 10px auto 20px;
+    border-radius: 2px;
+}
+
+
+/* Dekorasi pojok kiri bawah */
+.welcome-section {
+  display: flex;
+  justify-content: center;
+  padding: 20px 10px;
+  margin-top: 120px;
+}
+
+.welcome-card {
+  position: relative; /* penting supaya absolute mengikuti card */
+  width: 100%;
+  max-width: 600px;
+  border-radius: 40px;
+  padding: 30px 20px;
+  margin: 40px auto;
+  overflow: hidden; /* supaya bunga tidak keluar card */
+}
+
+/* Style umum untuk kedua bunga */
+.corner {
+  position: absolute;
+  width: 120px;
+  pointer-events: none; /* supaya tidak ganggu klik */
+  z-index: 1;
+}
+
+.corner img {
+  width: 100%;
+  display: block;
+}
+
+/* Kiri bawah (normal) */
+.corner-left {
+  bottom: 0;
+  left: 0;
+}
+
+/* Kanan atas (diputar 180°) */
+.corner-right {
+  top: 0;
+  right: 0;
+}
+
+.corner-right img {
+  transform: rotate(180deg);
+}
+
+/* Konten di atas bunga */
+.card-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.great-text {
+  text-align: justify;
+}
+
+.card-content .title-script{
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    color: #800000;
+}
+
+
+
+
+/* Couple Section*/
+.bismillah {
+  font-size: 28px;
+  margin-bottom: 40px;
+  font-weight: 500;
+}
+
+/* Wrapper pasangan */
+.couple-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
+
+/* Card masing-masing */
+.couple-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.couple-card {
+  max-width: 320px;
+}
+
+/* Wrapper untuk frame & foto */
+.frame-wrapper {
+  position: relative;
+  width: 300px;   /* sesuaikan dengan frame */
+  height: 400px;
+  margin: 0 auto 20px;
+  filter: drop-shadow(0 8px 15px rgba(0,0,0,0.1));
+  overflow: hidden;  /* pastikan bagian foto yang keluar terpotong */
+}
+
+.frame {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  pointer-events: none; /* agar frame tidak menghalangi klik */
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.25));
+}
+
+/* Foto dalam frame */
+.couple-photo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 75%;       /* sesuaikan agar tidak keluar frame */
+  height: 80%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  border-radius: 50% / 60%;  /* buat oval supaya cocok dengan frame */
+  z-index: 1;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+/* Foto di tengah frame */
+.couple-photo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 65%;   /* sesuaikan supaya pas dengan lubang frame */
+  height: 70%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.divider-couple {
+  display: flex;
+  align-items: center;
+  font-size: 36px;
+  font-weight: 700;
+  color: #bfa14a; /* warna gold elegan */
+  user-select: none;
+  position: relative;
+  height: 80px;
+  width: 180px;        /* Lebar diperlebar supaya garis total lebih panjang */
+  flex-shrink: 0;
+  justify-content: center; /* pastikan konten span & garis center */
+}
+
+.divider-couple span {
+  position: relative;
+  z-index: 2;
+}
+
+/* Garis horizontal kiri dan kanan */
+.divider-couple::before,
+.divider-couple::after {
+  content: "";
+  width: 70px;       /* panjang garis */
+  height: 2px;
+  background: #bfa14a;
+  opacity: 0.6;
+  margin: 0 12px;
+  align-self: center;
+  position: relative;
+  top: 0;
+  flex: none;
+}
+/* couple section */
+
+
+/* COUNTDOWN */
+.countdown-box {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #800000;
+    margin-top: 20px;
+}
+
+/* RSVP FORM */
+#rsvpForm label {
+    font-weight: bold;
+}
+#rsvpForm textarea {
+    min-height: 80px;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: #3B2F2F;
+}
+
+/* MUSIC CONTROL */
+.music-control {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #D4AF37;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    padding: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 1001;
+    transition: 0.3s;
+}
+.music-control:hover {
+    background: #C2962B;
+}
+
+/* Container dekorasi */
+.top-decoration {
+  position: fixed;
+  top: -15;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  pointer-events: none; /* supaya tidak menghalangi klik */
+}
+
+/* Gambar bunga */
+.top-decoration img {
+  width: 100%;
+  display: block;
+  /*transform: rotate(180deg);  rotate tetap */
+}
+
+/* FLORAL BOTTOM */
+.footer-flower {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-height: 150px;
+    object-fit: cover;
+    pointer-events: none;
+    z-index: 998;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+}
+.footer-flower.show {
+    opacity: 1;
+}
+</style>
+</head>
+<body>
+<div class="top-decoration">
+    <img src="../assets/img/top-bg-removebg.png" alt="Dekorasi Bunga">
+</div>
+<!-- <img src="../assets/img/footer-bg-removebg.png" alt="floral" class="top-flower" id="topFlower"> -->
+<!-- COVER SCREEN -->
+<div id="coverScreen" class="cover-screen">
+    <div class="cover-content text-center">
+        
+        <p>Undangan Pernikahan</p>
+        <h1 id="invitation_title" class="title-script">Dani & Diana</h1>
+        <p>Kepada Yth.</p>
+        <h3 id="guestName">Bapak/Ibu Tamu</h3>
+        <button id="openInvitation" class="btn btn-romantic mt-4">Buka Undangan</button>
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="mainContent" class="konten" style="display:none;">
+    <section class="welcome-section">
+        <div class="welcome-card">
+            <div class="corner corner-right">
+                <img src="../assets/img/corner-left-bg.png" alt="Dekorasi Bunga">
+            </div>
+            <div class="corner corner-left">
+                <img src="../assets/img/corner-left-bg.png" alt="Dekorasi Bunga">
+            </div>
+
+            <div class="card-content">
+                <p>Kepada Yth.</p>
+                <h2 id="guestNameInvitation">Bapak/Ibu Tamu</h2>
+                <h5>di tempat <i id="guestAddress">Jakarta</i></h5>
+                <div class="divider"></div>
+                <p>Dengan penuh rasa hormat, anda diundang dalam sebuah acara:</p>
+                <h1 class="title-script" id="invitation_title_guest">Pernikahan Dani & Diana</h1>
+            </div>
+
+        </div>
+    </section>
+    <section class="welcome-great">
+        <div class="welcome-card">
+            <div class="corner corner-right">
+                <img src="../assets/img/corner-left-bg.png" alt="Dekorasi Bunga">
+            </div>
+            <div class="corner corner-left">
+                <img src="../assets/img/corner-left-bg.png" alt="Dekorasi Bunga">
+            </div>
+
+            <div class="card-content">
+                <p class="great-text">
+                    Dengan memohon rahmat dan ridha Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri dan memberikan doa restu pada pernikahan kami. Semoga kehadiran Anda menjadi berkah, mempererat silaturahmi, serta menghadirkan kebahagiaan dan keberkahan dalam langkah awal kami membangun keluarga sakinah, mawaddah, warahmah yang diridhai Allah SWT. Aamiin Ya Rabbal Alamin.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="couple-section">
+        <div class="welcome-card">
+            <div class="corner corner-right">
+                <img src="../assets/img/corner-left-bg.png" alt="Dekorasi Bunga">
+            </div>
+            <div class="corner corner-left">
+                <img src="../assets/img/corner-left-bg.png" alt="Dekorasi Bunga">
+            </div>
+
+            <div class="card-content">
+                <h2 class="bismillah">
+                    بِسْمِ ٱللَّٰهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ
+                </h2>
+
+                <div class="couple-wrapper">
+                    <!-- Mempelai Wanita -->
+                    <div class="couple-card">
+                        <div class="frame-wrapper">
+                            <img class="frame" src="../assets/img/border-mempelai.png" alt="Frame">
+                            <img class="couple-photo" src="../assets/img/person/wanita.png" alt="Mempelai Wanita">
+                        </div>
+                        <h3>Nama Mempelai Wanita</h3>
+                        <p>Putri dari Bapak ... & Ibu ...</p>
+                    </div>
+
+                    <!-- Divider dengan & -->
+                    <div class="divider-couple">
+                        <span>&amp;</span>
+                    </div>
+
+                        <!-- Mempelai Pria -->
+                    <div class="couple-card">
+                        <div class="frame-wrapper">
+                            <img class="frame" src="../assets/img/border-mempelai.png" alt="Frame">
+                            <img class="couple-photo" src="../assets/img/person/pria.png" alt="Mempelai Pria">
+                        </div>
+                        <h3>Nama Mempelai Pria</h3>
+                        <p>Putra dari Bapak ... & Ibu ...</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+    </section>
+
+    <section class="welcome-event">
+        <div class="welcome-card">
+            <div class="corner corner-right">
+                <img src="../assets/img/corner-left-bg.png" alt="Dekorasi Bunga">
+            </div>
+            <div class="corner corner-left">
+                <img src="../assets/img/corner-left-bg.png" alt="Dekorasi Bunga">
+            </div>
+
+            <div class="card-content">
+                <h3>Detail Acara</h3>
+                <div class="divider"></div>
+
+                <p><strong>Akad</strong></p>
+                <p id="akad_time">Minggu, 28 Feb 2026, 08:00 WIB</p>
+
+                <p class="mt-3"><strong>Resepsi</strong></p>
+                <p id="resepsi_time">Minggu, 28 Feb 2026, 10:00 WIB</p>
+
+                <p class="mt-3"><strong>Lokasi</strong></p>
+                <p id="location">Gedung Pernikahan, Jakarta</p>
+
+                <a id="mapsLink" target="_blank" class="btn btn-romantic mt-3">Lihat Lokasi</a>
+            </div>
+
+        </div>
+    </section>
+    <!-- <section class="hero">
+        <div>
+            
+            <p>Kepada Yth.</p>
+            <h2 id="guestNameInvitation">Bapak/Ibu Tamu</h2>
+            <h5>di tempat <i id="guestAddress">Jakarta</i></h5>
+            <div class="divider"></div>
+            <p>Dengan penuh rasa hormat, anda diundang dalam sebuah acara:</p>
+            <h1 class="title-script" id="invitation_title_guest">Pernikahan Dani & Diana</h1>
+        </div>
+    </section> -->
+
+    <div class="container">
+
+        <!-- EVENT INFO -->
+        <div class="section-card text-center">
+            <h3>Detail Acara</h3>
+            <div class="divider"></div>
+
+            <p><strong>Akad</strong></p>
+            <p id="akad_time">Minggu, 28 Feb 2026, 08:00 WIB</p>
+
+            <p class="mt-3"><strong>Resepsi</strong></p>
+            <p id="resepsi_time">Minggu, 28 Feb 2026, 10:00 WIB</p>
+
+            <p class="mt-3"><strong>Lokasi</strong></p>
+            <p id="location">Gedung Pernikahan, Jakarta</p>
+
+            <a id="mapsLink" target="_blank" class="btn btn-romantic mt-3">Lihat Lokasi</a>
+        </div>
+
+        <!-- COUNTDOWN -->
+        <div class="section-card text-center">
+            <h3>Menuju Hari Bahagia</h3>
+            <div class="divider"></div>
+            <div class="countdown-box" id="countdown">00:00:00</div>
+        </div>
+
+        <!-- RSVP -->
+        <div class="section-card">
+            <h3 class="text-center">Konfirmasi Kehadiran</h3>
+            <div class="divider"></div>
+
+            <form id="rsvpForm">
+                <div class="mb-3">
+                    <label>Jumlah Tamu</label>
+                    <input type="number" id="guestCount" class="form-control" value="1">
+                </div>
+
+                <div class="mb-3">
+                    <label>Status Kehadiran</label>
+                    <select id="attendanceStatus" class="form-control">
+                        <option value="attending">Hadir</option>
+                        <option value="not_attending">Tidak Hadir</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label>Pesan & Doa</label>
+                    <textarea id="message" class="form-control"></textarea>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-romantic">Kirim Konfirmasi</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <footer>
+        Made with ❤️ for our special day <br>
+        Dani & Diana
+    </footer>
+</div>
+
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+    <source src="../assets/music/gending.mp3" type="audio/mpeg">
+</audio>
+
+<!-- MUSIC BUTTON -->
+<button class="music-control" id="musicBtn">🔊</button>
+
+<!-- FLORAL BOTTOM -->
+<img src="../assets/img/footer-bg-removebg.png" alt="floral" class="footer-flower" id="footerFlower">
+
+<script>
+// MUSIC CONTROL & COVER ANIMATION
+const coverScreen = document.getElementById("coverScreen");
+const mainContent = document.getElementById("mainContent");
+const openBtn = document.getElementById("openInvitation");
+
+const music = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicBtn");
+let isPlaying = false;
+
+// FLORAL BOTTOM
+const footerFlower = document.getElementById("footerFlower");
+
+openBtn.addEventListener("click", function () {
+    // Play music
+    if (!isPlaying) {
+        music.play().catch(() => {});
+        musicBtn.innerText = "🔊";
+        isPlaying = true;
+    }
+
+    // Fade out cover
+    coverScreen.classList.add("fade-out");
+
+    setTimeout(() => {
+        coverScreen.style.display = "none";
+        mainContent.style.display = "block";
+        document.body.classList.remove("no-scroll");
+
+        // Show floral bottom with fade-in
+        footerFlower.classList.add("show");
+    }, 1000);
+});
+
+// Music toggle
+musicBtn.addEventListener("click", function () {
+    if (isPlaying) {
+        music.pause();
+        musicBtn.innerText = "🔇";
+    } else {
+        music.play().catch(() => {});
+        musicBtn.innerText = "🔊";
+    }
+    isPlaying = !isPlaying;
+});
+</script>
+</body>
+<script src="../js/invit_script_2.js"></script>
+</html>

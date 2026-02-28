@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wedding Invitation</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../css/invit_style_fix.css">
+</head>
+
+<body>
+<div class="top-decoration">
+    <img src="../assets/img/top-bg-removebg.png" alt="Dekorasi Bunga">
+</div>
+    <!-- COVER SCREEN -->
+<div id="coverScreen" class="cover-screen">
+    <div class="cover-content text-center">
+        <p>Undangan Pernikahan</p>
+        <h1 id="invitation_title" class="title-script"></h1>
+        <br>
+        <p>Kepada Yth.</p>
+        <h3 id="guestName"></h3>
+
+        <button id="openInvitation" class="btn btn-romantic mt-4">
+            Buka Undangan
+        </button>
+    </div>
+</div>
+
+<div id="mainContent" style="display:none;">
+    <div id="flower-container"></div>
+    <div class="wrapper">
+
+        <section class="page fade-section fullpage-hero">
+            <div class="hero-section-card">
+                <p class="title-hero">We're getting married</p>
+                <h1 class="couple-name">
+                    Jack <span>&</span> Grace
+                </h1>
+                    <!-- <h2 id="guestNameInvitation"></h2>
+                    <h5>di tempat <i id="guestAddress"></i></h5>
+                    <div class="divider"></div>
+                    <p>Dengan penuh rasa hormat, anda diundang dalam sebuah acara:</p>
+                    <h1 class="title-script" id="invitation_title_guest"></h1> -->
+            </div>
+        </section>
+        <section class="page fullpage-event fade-section">
+            <div class="event-section-card">
+                <div class="timeline-wrapper">
+    
+                    <h3 class="event-title text-center">Rangkaian Acara</h3>
+                    <div class="divider"></div>
+    
+                    <div class="timeline">
+    
+                        <div class="timeline-item">
+                            <h4>💍 Akad</h4>
+                            <p id="akad_time"></p>
+                        </div>
+    
+                        <div class="timeline-item">
+                            <h4>Resepsi 🎉</h4>
+                            <p id="resepsi_time"></p>
+                        </div>
+    
+                        <div class="timeline-item">
+                            <h4>📍 Lokasi</h4>
+                            <p id="location"></p>
+    
+                            <a id="mapsLink" target="_blank" class="btn-location">
+                                Lihat Lokasi
+                            </a>
+                        </div>
+    
+                    </div>
+    
+                </div>
+            </div>
+        </section>
+
+        <section class="page fullpage-countdown fade-section">
+            <div class="countdown-section-card">
+
+                <h3 class="countdown-title">Countdown Days</h3>
+                <div class="divider"></div>
+
+                <div id="countdown_time" class="countdown-subtitle-time"></div>
+
+                <div id="countdown" class="countdown-box">
+                    <!-- JS akan isi -->
+                </div>
+
+            </div>
+        </section>
+        
+        <!-- <section class="page fullpage-gallery fade-section">
+            <div class="gallery-section-card text-center ">
+                
+                <h3 class="gallery-title">Our Gallery</h3>
+                <div class="divider"></div>
+
+                <div class="gallery-grid">
+
+                    <div class="gallery-item">
+                        <img src="../assets/img/person/person-f-5.webp" alt="Foto 1">
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="../assets/img/person/person-f-8.webp" alt="Foto 2">
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="../assets/img/person/person-f-10.webp" alt="Foto 3">
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="../assets/img/person/person-m-7.webp" alt="Foto 4">
+                    </div>
+
+                    
+                </div>
+            </div>
+        </section> -->
+        
+        <section class="page fullpage-gallery fade-section">
+            <div class="gallery-section-card">
+                <div class="gallery-wrapper">
+                    <h3 class="gallery-title">Our Gallery</h3>
+                    <div class="divider"></div>
+    
+                    <div class="premium-gallery">
+    
+                        <!-- pria photo -->
+                        <div class="gallery-row row-fast">
+                            <img src="../assets/img/person/pria.png">
+                            <img src="../assets/img/person/person-f-8.webp">
+                            <img src="../assets/img/person/person-f-10.webp">
+                        </div>
+    
+                        <!-- wanita photo -->
+                        <div class="gallery-row row-medium">
+                            <img src="../assets/img/person/wanita.png">
+                            <img src="../assets/img/person/person-f-10.webp">
+                            <img src="../assets/img/person/person-f-5.webp">
+                        </div>
+    
+                        <!-- couple photo -->
+                        <div class="gallery-row row-slow">
+                            <img class="potrait" src="../assets/img/person/person-f-10.webp">
+                            <img class="potrait" src="../assets/img/person/person-f-5.webp">
+                            <img class="potrait" src="../assets/img/person/person-f-8.webp">
+                        </div>
+    
+                    </div>
+    
+                </div>
+            </div>
+
+
+        </section>
+
+
+        <!-- <section class="page fullpage-video fade-section">
+            <div class="video-section-card">
+                <div class="video-wrapper">
+    
+                    <h3 class="video-title">Our Story</h3>
+                    <div class="divider"></div>
+    
+                    <div class="video-container">
+                        <video
+                            id="weddingVideo"
+                            class="wedding-video"
+                            muted
+                            loop
+                            playsinline
+                            preload="metadata"
+                        >
+                            <source src="../assets/video/highlight.mp4" type="video/mp4">
+                            Browser tidak mendukung video.
+                        </video>
+                    </div>
+    
+                </div>
+            </div>
+        </section> -->
+        <section class="page fullpage-video fade-section">
+
+            <div class="video-section-card text-center">
+
+                <h3 class="video-title">Our Story</h3>
+                <div class="divider"></div>
+
+                <div class="video-grid">
+
+                    <!-- VIDEO -->
+                    <div class="video-main">
+                        <video autoplay muted loop playsinline>
+                            <source src="../assets/video/wedding.mp4" type="video/mp4">
+                        </video>
+                    </div>
+
+                    <!-- FOTO BAWAH -->
+                    <div class="video-photo">
+                        <img src="../assets/img/person/pria.png">
+                    </div>
+
+                    <div class="video-photo">
+                        <img src="../assets/img/person/wanita.png">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="page fullpage-rsvp fade-section">
+            <div class="rsvp-section-card">
+
+                <h3 class="rsvp-title">Reservation</h3>
+                <div class="divider"></div>
+
+                <form class="form-rsvp" id="rsvpForm">
+
+                    <div class="form-group">
+                        <label>Jumlah Tamu</label>
+                        <input type="number" id="guestCount" value="1">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Status Kehadiran</label>
+                        <select id="attendanceStatus">
+                            <option value="attending">✨ Hadir</option>
+                            <option value="not_attending">🙏 Tidak Hadir</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Pesan & Doa</label>
+                        <textarea id="message" rows="4"
+                            placeholder="Tuliskan doa & harapan terbaik..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-rsvp">
+                        Kirim Konfirmasi
+                    </button>
+
+                </form>
+
+            </div>
+        </section>
+        <section class="page fullpage-wrapper">
+            <div class="container fade-section">
+                <div class="section-footer">
+                    <footer class="footer">
+                        <h1 class="couple-name">
+                            Thank You
+                        </h1>
+                        <p class="title-hero">
+                            Kami mengucapkan terimakasih kepada Bapak/Ibu/Saudara yang telah menghadiri seluruh rangkaian acara pernikahan kami. 
+                            Semoga waktu yang diberikan oleh Bapak/Ibu/Saudara sekalian menjadi berkah dan manfaat yang kelak dibalas oleh Tuhan Yang Maha Esa. 
+                            Terima kasih atas seluruh ucapan yang diberikan. Semoga kami menjadi pasangan yang berbahagia dunia dan akhirat :)
+                        </p>
+                        <!-- Made with ❤️ for our special day  -->
+                        <br>
+                        <h1 class="couple-name">
+                            Dani ❤️ Diana
+                        </h1>
+                    </footer>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+    
+    
+
+
+
+</div>
+
+
+
+
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+    <source src="../assets/music/gending.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music-control" id="musicBtn">
+    🔊
+</button>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const sections = document.querySelectorAll(".fade-section");
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+
+            // jika section keluar viewport → fade out
+            if (!entry.isIntersecting) {
+                entry.target.classList.add("fade-out");
+            } 
+            // jika kembali terlihat → muncul lagi
+            else {
+                entry.target.classList.remove("fade-out");
+            }
+
+        });
+    }, {
+        threshold: 0.2   // 20% terlihat
+    });
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+
+});
+</script>
+
+<script>
+document.querySelectorAll('.gallery-row').forEach(row => {
+    row.innerHTML += row.innerHTML;
+});
+</script>
+
+<script src="../js/invit_script_fix.js"></script>
+</body>
+</html>

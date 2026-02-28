@@ -1,8 +1,9 @@
 body {
     margin: 0;
-    font-family: 'Georgia', serif;
+    font-family:'Segoe UI', sans-serif;
+    line-height:1.6;
     color: #fff;
-    background: url('../images/batik-bg.jpg') no-repeat center center fixed;
+    background: url('../assets/img/main-bg.jpg') no-repeat center center fixed;
     background-size: cover;
     position: relative;
 }
@@ -11,7 +12,7 @@ body {
 .cover-screen {
     position: fixed;
     inset: 0;
-    background: url('../assets/images/batik-bg.jpg') center/cover no-repeat;
+    background: url('../assets/img/batik-bg.jpg') center/cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,7 +63,7 @@ body::before {
 }
 
 .title-script {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: bold;
     color: #f5d7a1;
 }
@@ -95,6 +96,27 @@ body::before {
     background-color: #6e472d;
 }
 
+/* Footer / Back to Top */
+.footer{
+    text-align:center;
+    padding:40px 20px;
+    /* background:#faf8f4; */
+    position:relative;
+}
+#back-to-top,#music-toggle{
+    position:fixed;
+    right:20px;
+    background:#bfa14a;
+    color:#fff;
+    border:none;
+    padding:5px 5px;
+    border-radius:50%;
+    cursor:pointer;
+    z-index:999;
+}
+#music-toggle{bottom:20px;}
+#back-to-top{bottom:80px;display:none;}
+
 /* Music Button */
 .music-control {
     position: fixed;
@@ -108,3 +130,76 @@ body::before {
     cursor: pointer;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
+
+/* Container dekorasi */
+.top-decoration {
+  position: fixed;
+  top: -15;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  pointer-events: none; /* supaya tidak menghalangi klik */
+}
+
+/* Gambar bunga */
+.top-decoration img {
+  width: 100%;
+  display: block;
+  /*transform: rotate(180deg);  rotate tetap */
+}
+
+/* FLORAL BOTTOM */
+.footer-flower {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-height: 150px;
+    object-fit: cover;
+    pointer-events: none;
+    z-index: 998;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+}
+.footer-flower.show {
+    opacity: 1;
+}
+
+.flower {
+    position: fixed;
+    bottom: -60px; /* Sembunyi di bawah layar */
+    z-index: 9999;
+    user-select: none;
+    pointer-events: none;
+    opacity: 0.8;
+    animation: flyUp linear forwards;
+}
+/* Penyesuaian untuk Smartphone (Layar di bawah 600px) */
+@media screen and (max-width: 600px) {
+    .flower {
+        font-size: 18px !important; /* Paksa ukuran lebih kecil di HP */
+    }
+}
+@media screen and (max-width: 1200px) {
+    .flower {
+        font-size: 22px !important; /* Paksa ukuran lebih kecil di HP */
+    }
+}
+@keyframes flyUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        /* Terbang ke atas melampaui tinggi layar */
+        transform: translateY(-120vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+

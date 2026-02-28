@@ -11,6 +11,7 @@ let isPlaying = false; // status musik
 // disable scroll saat cover muncul
 document.body.classList.add("no-scroll");
 
+
 // Tombol pause/play
 musicBtn.addEventListener("click", function () {
     if (isPlaying) {
@@ -43,15 +44,15 @@ openBtn.addEventListener("click", function () {
 });
 
 
-// const API_BASE = "http://127.0.0.1:8000/api";
-const API_BASE = "https://emdeha2021.pythonanywhere.com/api/invitations";
+const API_BASE = "http://127.0.0.1:8000/api/invitations";
+// const API_BASE = "https://emdeha2021.pythonanywhere.com/api/invitations";
 
 const query = window.location.search.substring(1);
 const parts = query.split('/');
 const invitationSlug = parts[0];
 const guestSlug = parts[1];
 
-
+let global_date = '';
 
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -65,14 +66,19 @@ document.addEventListener("DOMContentLoaded", function() {
         if (invitation_titleEl) invitation_titleEl.innerText = data.invitation_title;
         // document.getElementById("invitation_title").innerText = data.invitation_title;
         const akad_timeEl = document.getElementById("akad_time");
-        if (akad_timeEl) akad_timeEl.innerText = `${formatDate(data.event_date)} | Pukul ${formatTime(data.akad_time)} WIB`;
+        if (akad_timeEl) akad_timeEl.innerText = `${formatDate(data.event_date)} Pukul ${formatTime(data.akad_time)} WIB`;
         console.log("mempelai: "+akad_timeEl);
         // document.getElementById("akadTime").innerText =
         //     `${formatDate(data.event_date)} | Pukul ${formatTime(data.akad_time)} WIB`;
 
         const resepsi_timeE3 = document.getElementById("resepsi_time");
-        if (resepsi_timeE3) resepsi_timeE3.innerText = `Mulai pukul ${formatTime(data.reception_start_time)} WIB & sampai pukul ${formatTime(data.reception_end_time)} WIB`;
+        if (resepsi_timeE3) resepsi_timeE3.innerText = `Pukul ${formatTime(data.reception_start_time)} WIB - Pukul ${formatTime(data.reception_end_time)} WIB`;
         // document.getElementById("resepsiTime").innerText =
+
+        // countdown time date
+        const countdown_timeEl = document.getElementById("countdown_time");
+        if (countdown_timeEl) countdown_timeEl.innerText = `${formatDate(data.event_date)}`;
+        console.log("mempelai: "+countdown_timeEl);
             
 
         const locationE4 = document.getElementById("location");
@@ -80,8 +86,13 @@ document.addEventListener("DOMContentLoaded", function() {
         // document.getElementById("location").innerText = data.location;
         document.getElementById("mapsLink").href = data.google_maps;
 
-        startCountdown(data.event_date);
+        console.log("targetDateCountdown: ", data.event_date);
+        global_date = data.event_date;
     });
+    // startCountdown(data.event_date);
+    // const targetDateCountdown = new Date(data.event_date).getTime();
+    // setInterval(updateCountdown, 1000);
+    // updateCountdown(targetDateCountdown);
 
     // Load Guest
     fetch(`${API_BASE}/public/${invitationSlug}/${guestSlug}/`)
@@ -112,28 +123,67 @@ function formatTime(timeString) {
 }
 
 // Countdown
-function startCountdown(date) {
-    const target = new Date(date).getTime();
-    const interval = setInterval(() => {
+// function startCountdown(date) {
+//     const target = new Date(date).getTime();
+//     const interval = setInterval(() => {
 
-        const now = new Date().getTime();
-        const diff = target - now;
+//         const now = new Date().getTime();
+//         const diff = target - now;
 
-        if (diff < 0) {
-            document.getElementById("countdown").innerText =
-                "Hari Bahagia Telah Tiba 💍";
-            clearInterval(interval);
-            return;
-        }
+//         if (diff < 0) {
+//             document.getElementById("countdown").innerText =
+//                 "Hari Bahagia Telah Tiba 💍";
+//             clearInterval(interval);
+//             return;
+//         }
 
-        const days = Math.floor(diff / (1000*60*60*24));
-        const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-        const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
+//         const days = Math.floor(diff / (1000*60*60*24));
+//         const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+//         const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
+//         const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-        document.getElementById("countdown").innerText =
-            `${days} Hari ${hours} Jam ${minutes} Menit`;
-    }, 1000);
+//         document.getElementById("countdown").innerText =
+//             `${days} Days ${hours} Hours ${minutes} Minutes ${seconds} Seconds`;
+//     }, 1000);
+// }
+function updateCountdown() {
+
+    console.log("countdown dates: ", global_date);
+    const eventDateTime = new Date(global_date).getTime();
+    const targetDate = eventDateTime;
+    console.log("target Date:", targetDate);
+    const now = new Date().getTime();
+    const gap = targetDate - now;
+
+    const d = Math.floor(gap / (1000*60*60*24));
+    const h = Math.floor((gap / (1000*60*60)) % 24);
+    const m = Math.floor((gap / (1000*60)) % 60);
+    const s = Math.floor((gap / 1000) % 60);
+
+    document.getElementById("countdown").innerHTML = `
+        <div class="countdown-item">
+            <div class="countdown-number">${d}</div>
+            <div class="countdown-label">Days</div>
+        </div>
+        <div class="countdown-item">
+            <div class="countdown-number">${h}</div>
+            <div class="countdown-label">Hours</div>
+        </div>
+        <div class="countdown-item">
+            <div class="countdown-number">${m}</div>
+            <div class="countdown-label">Minutes</div>
+        </div>
+        <div class="countdown-item">
+            <div class="countdown-number">${s}</div>
+            <div class="countdown-label">Seconds</div>
+        </div>
+    `;
 }
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+// updateCountdown();
+
 
 // RSVP
 // document.addEventListener("submit", function(e){
@@ -209,6 +259,22 @@ document.getElementById("rsvpForm").addEventListener("submit", async function (e
         //     `<div class="alert alert-danger">${result.error}</div>`;
     }
 });
+
+const video = document.getElementById("weddingVideo");
+
+const videoObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+            video.play().catch(() => {});
+        } else {
+            video.pause();
+        }
+
+    });
+}, { threshold: 0.6 });
+
+videoObserver.observe(video);
 
 window.onload = function() {
     const container = document.getElementById('flower-container');

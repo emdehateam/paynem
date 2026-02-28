@@ -1,0 +1,214 @@
+/* FONT */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto&display=swap');
+
+/* GENERAL */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin:0;
+    padding:0;
+    background: #FFF5E1;
+    color: #3B2F2F;
+}
+
+/* COVER SCREEN */
+.cover-screen {
+    position: fixed;
+    top:0; left:0;
+    width: 100%;
+    height: 100%;
+    background: url('../assets/img/welcome.jpg') center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1000;
+    transition: opacity 1s ease;
+}
+.cover-screen.fade-out {
+    opacity: 0;
+}
+.cover-content p {
+    margin:0;
+    font-size: 1.2rem;
+}
+.cover-content h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    color: #D4AF37;
+}
+/* FOOTER FLORAL BOTTOM */
+.container-cermin {
+  position: relative;
+  width: 100%;
+  max-height: 350px; /* Sesuaikan dengan kebutuhan */
+  background: transparent; /* Opsional: hanya untuk melihat area */
+  overflow: hidden;
+}
+
+/* Gambar asli di pojok kiri bawah */
+/* bottom left image */
+.container-cermin img {
+    position: absolute;
+    bottom: 0;
+    left: -15px;
+    width: 150px; /* Sesuaikan ukuran */
+    height: 150px;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards; 
+
+    background-size: cover;
+    transform: scaleX(-1);
+    object-fit: cover;
+    pointer-events: none; /* agar tidak mengganggu klik di konten */
+    z-index: 999; /* di atas konten */
+}
+/* Gambar Kiri: Meluncur dari kiri */
+.gambar-kiri {
+  left: 0;
+  animation-name: slideDariKiri;
+}
+
+/* Gambar Kanan: Meluncur dari kanan + Mirror */
+.gambar-kanan {
+  right: 0;
+  transform: scaleX(-1); /* Efek mirror */
+  animation-name: slideDariKanan;
+}
+
+/* Definisi Animasi Keyframes */
+@keyframes slideDariKiri {
+  from {
+    transform: translateX(-100%); /* Mulai dari luar layar kiri */
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDariKanan {
+  from {
+    /* Perhatikan: scaleX(-1) harus tetap ada agar tidak terbalik saat bergerak */
+    transform: translateX(100%) scaleX(-1); 
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) scaleX(-1);
+    opacity: 1;
+  }
+}
+
+
+
+/* BUTTON */
+.btn-romantic {
+    background: #D4AF37;
+    color: #fff;
+    border: none;
+    padding: 10px 30px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+.btn-romantic:hover {
+    background: #C2962B;
+    color: #fff;
+}
+
+/* HERO SECTION */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    background: url('../assets/images/hero-bg.jpg') center/cover no-repeat;
+    color: #3B2F2F;
+}
+.hero .title-script {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    color: #800000;
+}
+
+/* SECTION CARD */
+.section-card {
+    background: rgba(255,255,255,0.9);
+    margin: 40px auto;
+    padding: 30px 20px;
+    border-radius: 20px;
+    max-width: 600px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+.divider {
+    width: 80px;
+    height: 3px;
+    background: #D4AF37;
+    margin: 10px auto 20px;
+    border-radius: 2px;
+}
+
+/* COUNTDOWN */
+.countdown-box {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #800000;
+    margin-top: 20px;
+}
+
+/* RSVP FORM */
+#rsvpForm label {
+    font-weight: bold;
+}
+#rsvpForm textarea {
+    min-height: 80px;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    margin-bottom: 80px;
+    font-size: 0.9rem;
+    color: #3B2F2F;
+}
+
+/* MUSIC CONTROL */
+.music-control {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #D4AF37;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    padding: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 1001;
+}
+.music-control:hover {
+    background: #C2962B;
+}
+
+/* Footer / Back to Top */
+.footer{text-align:center;padding:40px 20px;background:#faf8f4;position:relative;}
+#back-to-top,#music-toggle{position:fixed;right:20px;background:#bfa14a;color:#fff;border:none;padding:10px 14px;border-radius:50%;cursor:pointer;z-index:999;}
+#music-toggle{bottom:20px;}
+#back-to-top{bottom:80px;display:none;}
+
+/* Fade & Scale Animations */
+.fade-in{opacity:0;transform:translateY(30px);transition:all 0.8s ease-out;}
+.fade-in.show{opacity:1;transform:translateY(0);}
+.animate-fade-scale{opacity:0;transform:scale(0.8) translateY(20px);transition:all 0.8s ease-out;}
+.animate-fade-scale.show{opacity:1;transform:scale(1) translateY(0);}
+.animate-fade-scale.delay-1{transition-delay:0.3s;}
+.animate-fade-scale.delay-2{transition-delay:0.6s;}
+.animate-fade-scale.delay-3{transition-delay:0.9s;}
+.animate-scale{opacity:0;transform:scale(0.7);transition:all 0.6s ease-out;}
+.animate-scale.show{opacity:1;transform:scale(1);transition:0.6s;}
+
+/* Responsive */
+@media(max-width:768px){.couple-wrapper{flex-direction:column;gap:40px;}}

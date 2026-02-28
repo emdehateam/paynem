@@ -247,3 +247,20 @@ window.onload = function() {
 };
 
 
+// animation
+// Fade-in on scroll
+const faders = document.querySelectorAll('.fade-in, .animate-fade-scale, .animate-scale');
+const appearOptions = { threshold: 0.2 };
+const appearOnScroll = new IntersectionObserver(function(entries, observer){
+  entries.forEach(entry=>{
+    if(!entry.isIntersecting) return;
+    entry.target.classList.add('show');
+    observer.unobserve(entry.target);
+  });
+}, appearOptions);
+faders.forEach(fader=>appearOnScroll.observe(fader));
+
+// Back to Top button
+const backToTop = document.getElementById('back-to-top');
+window.addEventListener('scroll',()=>{backToTop.style.display=window.scrollY>300?'block':'none';});
+backToTop.addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'});});

@@ -3,7 +3,7 @@
     font-family:'Segoe UI', sans-serif;
     line-height:1.6;
     color: #fff;
-    background: url('../assets/img/main-bg.jpg') no-repeat center center fixed;
+    background: url('../assets/img/main-bg.webp') no-repeat center center fixed;
     background-size: cover;
     position: relative;
     scroll-snap-type: y mandatory;
@@ -18,7 +18,7 @@ html, body {
     overflow: hidden; /* penting */
     scroll-snap-type: y mandatory;
     overscroll-behavior-y: contain;
-    background: url('../assets/img/main-bg.jpg') no-repeat center center fixed;
+    background: url('../assets/img/main-bg.webp') no-repeat center center fixed;
 }
 
 .wrapper {

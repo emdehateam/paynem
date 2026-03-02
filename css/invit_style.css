@@ -12,7 +12,7 @@ body {
 .cover-screen {
     position: fixed;
     inset: 0;
-    background: url('../assets/img/batik-bg.jpg') center/cover no-repeat;
+    background: url('../assets/img/batik-bg.webp') center/cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
